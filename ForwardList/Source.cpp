@@ -1,4 +1,4 @@
-//ForwardList
+п»ї//ForwardList
 #include<iostream>
 using namespace std;
 using std::cin;
@@ -11,8 +11,8 @@ class ForwardList;
 
 class Element
 {
-	int Data;		//Значение элемента
-	Element* pNext;	//Адрес следующего элемента
+	int Data;		//Р—РЅР°С‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р°
+	Element* pNext;	//РђРґСЂРµСЃ СЃР»РµРґСѓСЋС‰РµРіРѕ СЌР»РµРјРµРЅС‚Р°
 	static unsigned int count;
 public:
 	Element(int Data, Element* pNext = nullptr) :Data(Data), pNext(pNext)
@@ -30,7 +30,7 @@ public:
 	friend ForwardList operator+(const ForwardList& left, const ForwardList& right);
 };
 
-unsigned int Element::count = 0;	//Инициализация статической переменной
+unsigned int Element::count = 0;	//РРЅРёС†РёР°Р»РёР·Р°С†РёСЏ СЃС‚Р°С‚РёС‡РµСЃРєРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№
 
 class Iterator
 {
@@ -94,24 +94,24 @@ public:
 	}
 	ForwardList()
 	{
-		Head = nullptr;//Если Голова указывает на 0, то список пуст, т.е. не содежрит элементов
+		Head = nullptr;//Р•СЃР»Рё Р“РѕР»РѕРІР° СѓРєР°Р·С‹РІР°РµС‚ РЅР° 0, С‚Рѕ СЃРїРёСЃРѕРє РїСѓСЃС‚, С‚.Рµ. РЅРµ СЃРѕРґРµР¶СЂРёС‚ СЌР»РµРјРµРЅС‚РѕРІ
 		size = 0;
 		cout << "LConstructor:\t" << this << endl;
 	}
 	ForwardList(const initializer_list<int>& il) :ForwardList()
 	{
-		//begin() - возвращает итератор на начало контейнера
-		//end()   - возвращает итератор на конец контейнера
+		//begin() - РІРѕР·РІСЂР°С‰Р°РµС‚ РёС‚РµСЂР°С‚РѕСЂ РЅР° РЅР°С‡Р°Р»Рѕ РєРѕРЅС‚РµР№РЅРµСЂР°
+		//end()   - РІРѕР·РІСЂР°С‰Р°РµС‚ РёС‚РµСЂР°С‚РѕСЂ РЅР° РєРѕРЅРµС† РєРѕРЅС‚РµР№РЅРµСЂР°
 		cout << typeid(il.begin()).name() << endl;
 
 		for (int const* it = il.begin(); it != il.end(); it++)
 		{
 			push_back(*it);
 		}
-		//int* pa;		//указатель
-		//const int* сpa;	//константный указатель
-		//int const* pсa;	//указатель на константу
-		//const int const* сpсa;//константный указатель на константу
+		//int* pa;		//СѓРєР°Р·Р°С‚РµР»СЊ
+		//const int* СЃpa;	//РєРѕРЅСЃС‚Р°РЅС‚РЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ
+		//int const* pСЃa;	//СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕРЅСЃС‚Р°РЅС‚Сѓ
+		//const int const* СЃpСЃa;//РєРѕРЅСЃС‚Р°РЅС‚РЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕРЅСЃС‚Р°РЅС‚Сѓ
 	}
 	ForwardList(const ForwardList& other) :ForwardList()
 	{
@@ -191,7 +191,7 @@ public:
 	{
 		if (index > Head->count)
 		{
-			cout << "Error:Выход за пределы списка" << endl;
+			cout << "Error:Р’С‹С…РѕРґ Р·Р° РїСЂРµРґРµР»С‹ СЃРїРёСЃРєР°" << endl;
 			return;
 		}
 		Element* Temp = Head;
@@ -228,14 +228,14 @@ public:
 			cout << "Error: out of range" << endl;
 			return;
 		}
-		//1) Доходим до нужного элемента:
+		//1) Р”РѕС…РѕРґРёРј РґРѕ РЅСѓР¶РЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°:
 		Element* Temp = Head;
 		for (int i = 0; i < index - 1; i++)Temp = Temp->pNext;
-		//2) Запоминаем адрем удаляемого элемента:
+		//2) Р—Р°РїРѕРјРёРЅР°РµРј Р°РґСЂРµРј СѓРґР°Р»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°:
 		Element* Erased = Temp->pNext;
-		//3) Исключаем удаляемый элемент из списка:
+		//3) РСЃРєР»СЋС‡Р°РµРј СѓРґР°Р»СЏРµРјС‹Р№ СЌР»РµРјРµРЅС‚ РёР· СЃРїРёСЃРєР°:
 		Temp->pNext = Temp->pNext->pNext;
-		//4) Удаляем элемент из памяти:
+		//4) РЈРґР°Р»СЏРµРј СЌР»РµРјРµРЅС‚ РёР· РїР°РјСЏС‚Рё:
 		delete Erased;
 		size--;
 	}
@@ -274,7 +274,7 @@ public:
 	//				Methods:
 	void print()const
 	{
-		/*Element* Temp = Head;//Temp - это итератор
+		/*Element* Temp = Head;//Temp - СЌС‚Рѕ РёС‚РµСЂР°С‚РѕСЂ
 		while (Temp)
 		{
 			cout << Temp << "\t" << Temp->Data << "\t" << Temp->pNext << endl;
@@ -283,8 +283,8 @@ public:
 		for (Element* Temp = Head; Temp; Temp = Temp->pNext)
 			//for (Element* Temp = Head; Temp; Temp = Temp->pNext)
 			cout << Temp << "\t" << Temp->Data << "\t" << Temp->pNext << endl;
-		cout << "Количество элементов списка:" << size << endl;
-		cout << "Общее количество элементов: " << Head->count << endl;
+		cout << "РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ СЃРїРёСЃРєР°:" << size << endl;
+		cout << "РћР±С‰РµРµ РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ: " << Head->count << endl;
 	}
 };
 
@@ -308,7 +308,7 @@ void main()
 	setlocale(LC_ALL, "");
 #ifdef BASE_CHECK
 	int n;
-	cout << "Введите размер списка: "; cin >> n;
+	cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ СЃРїРёСЃРєР°: "; cin >> n;
 	ForwardList list;
 	for (int i = 0; i < n; i++)
 	{
@@ -319,12 +319,12 @@ void main()
 
 	int index;
 	int value;
-	cout << "Введите индекс добавляемого элемента: "; cin >> index;
-	cout << "Введите значение добавляемого элемента: "; cin >> value;
+	cout << "Р’РІРµРґРёС‚Рµ РёРЅРґРµРєСЃ РґРѕР±Р°РІР»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: "; cin >> index;
+	cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РґРѕР±Р°РІР»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: "; cin >> value;
 	list.insert(index, value);
 	list.print();
 
-	cout << "Введите индекс удаляемого элемента: "; cin >> index;
+	cout << "Р’РІРµРґРёС‚Рµ РёРЅРґРµРєСЃ СѓРґР°Р»СЏРµРјРѕРіРѕ СЌР»РµРјРµРЅС‚Р°: "; cin >> index;
 	list.erase(index);
 	list.print();
 
@@ -377,7 +377,7 @@ void main()
 
 #ifdef UNIQUE_CHECK
 	int n;
-	cout << "Введите размер списка: "; cin >> n;
+	cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ СЃРїРёСЃРєР°: "; cin >> n;
 	ForwardList list;
 	for (int i = 0; i < n; i++)
 	{
